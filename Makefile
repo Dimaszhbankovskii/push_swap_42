@@ -16,8 +16,8 @@ SOURCES_LIST		=	push_swap.c \
 						create_data.c \
 						create_result.c \
 						add_command.c \
-						ft_commands_1.c \
-						ft_commands_2.c \
+						commands_1.c \
+						commands_2.c \
 						utils_stack_1.c \
 						utils_stack_2.c \
 						quick_sort.c \

@@ -69,8 +69,8 @@ int			ss(t_stack **stack_a, t_stack **stack_b);
 int			pa_pb(t_stack **stack_from, t_stack **stack_to);
 int			ra_rb(t_stack **stack);
 int			rr(t_stack **stack_a, t_stack **stack_b);
-int			ft_rra_rrb(t_stack **stack);
-int			ft_rrr(t_stack **stack_a, t_stack **stack_b);
+int			rra_rrb(t_stack **stack);
+int			rrr(t_stack **stack_a, t_stack **stack_b);
 //-----------------------------------------
 //--------- quick sort --------------------
 

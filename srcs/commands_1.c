@@ -68,7 +68,7 @@ int	ra_rb(t_stack **stack)
 	return (1);
 }
 
-int	ft_rra_rrb(t_stack **stack)
+int	rra_rrb(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*begin;
@@ -77,9 +77,7 @@ int	ft_rra_rrb(t_stack **stack)
 	begin = *stack;
 	if (!begin || !begin->next)
 		return (0);
-	end = *stack;
-	while (end->next)
-		end = end->next;
+	end = end_stack(stack);
 	tmp = end->prev;
 	end->next = begin;
 	end->prev = NULL;
