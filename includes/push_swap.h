@@ -62,8 +62,8 @@ int			error_mess(char	*mess, t_main *inf, int num_error); // +
 int			check_sort_input_data(char **arr); // +
 
 //--------- commands ----------------------
-void		do_command(t_stack **stack_a, t_stack **stack_b, t_command **result, char const *str);
-void		write_command(t_command **result, char const *str, int done);
+void		do_command(t_main *inf, char const *str);
+void		write_command(t_main *inf, char const *str, int done);
 int			ft_sa_sb(t_stack **stack);
 int			ft_ss(t_stack **stack_a, t_stack **stack_b);
 int			ft_pa_pb(t_stack **stack_from, t_stack **stack_to);
@@ -78,17 +78,18 @@ int			ft_rrr(t_stack **stack_a, t_stack **stack_b);
 void		private_sort(t_main *inf);
 
 
-void		ft_special_sort(t_stack **stack_a, t_stack **stack_b, t_command **result);
-void		ft_spec_sort_b(t_stack **stack_a, t_stack **stack_b, t_command **result);
+void		ft_special_sort(t_main *inf);
+void		ft_spec_sort_b(t_main *inf);
 
 //-----------------------------------------
 //--------- big sort ----------------------
-void		quick_sort(t_stack **a, t_stack **b, t_data *data, t_command **res);
+void		quick_sort(t_main *inf);
 
-void		ft_block_1(t_stack **a, t_stack **b, t_data *data, t_command **res);
-void		ft_block_2(t_stack **a, t_stack **b, t_data *data, t_command **res);
-void		ft_div_b(t_stack **a, t_stack **b, t_data *data, t_command **res);
-void		ft_div_a(t_stack **a, t_stack **b, t_data *data, t_command **res);
+void		ft_block_1(t_main *inf);
+
+void		ft_block_2(t_main *inf);
+void		partition_b(t_main *inf);
+void		partition_a(t_main *inf);
 
 //---------- utils stack -------------------
 int			len_stack(t_stack **stack);
@@ -108,7 +109,7 @@ int			ft_count_commands(t_command **result);
 int			ft_strcmp(char const *str1, char const *str2);
 void		print_result(t_command **result);
 
-char	*list_to_str(t_command **result);
+char		*list_to_str(t_command **result);
 
 
 //---------------------

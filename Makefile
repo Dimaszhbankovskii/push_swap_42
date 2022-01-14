@@ -15,12 +15,11 @@ SOURCES_LIST		=	push_swap.c \
 						create_stack_a.c \
 						create_data.c \
 						create_result.c \
-						ft_add_command.c \
+						add_command.c \
 						ft_commands_1.c \
 						ft_commands_2.c \
 						ft_utils_stack.c \
-						ft_private_sort.c \
-						ft_big_sort.c \
+						quick_sort.c \
 						ft_big_sort_block_1.c \
 						ft_big_sort_block_2.c \
 						ft_special_sort.c \

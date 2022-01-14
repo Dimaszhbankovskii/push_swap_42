@@ -1,51 +1,38 @@
 #include "../includes/push_swap.h"
 
-static void	ft_rotate(t_stack **a, t_stack **b, t_data *data, t_command **res)
+static void	ft_rotate(t_main *inf)
 {
-	t_stack	*tmp_a;
-	t_stack	*tmp_b;
 	t_stack	*end_a;
 
-	tmp_a = *a;
-	tmp_b = *b;
-	end_a = end_stack(&tmp_a);
+	end_a = end_stack(&(inf->stack_a));
 	while (end_a->flag == 0)
 	{
-		if (tmp_b->order == data->next)
-			do_command(&tmp_a, &tmp_b, res, "rra");
+		if (inf->stack_b->order == inf->data->next)
+			do_command(inf, "rra");
 		else
-			do_command(&tmp_a, &tmp_b, res, "rrr");
-		end_a = end_stack(&tmp_a);
+			do_command(inf, "rrr");
+		end_a = end_stack(&(inf->stack_a));
 	}
-	*a = tmp_a;
-	*b = tmp_b;
 }
 
-void	ft_block_2(t_stack **a, t_stack **b, t_data *data, t_command **res)
+void	ft_block_2(t_main *inf)
 {
-	t_stack	*tmp_a;
-	t_stack	*tmp_b;
-
-	tmp_a = *a;
-	tmp_b = *b;
-	update_data(data, &tmp_a);
-	while (!tmp_a->flag)
+	update_data(inf->data, &(inf->stack_a));
+	while (!(inf->stack_a->flag))
 	{
-		if (tmp_a->order == data->next)
+		if (inf->stack_a->order == inf->data->next)
 		{
-			if (tmp_a->order - end_stack(&tmp_a)->order == 1)
+			if (inf->stack_a->order - end_stack(&(inf->stack_a))->order == 1)
 			{
-				tmp_a->flag++;
-				do_command(&tmp_a, &tmp_b, res, "ra");
-				data->next++;
+				inf->stack_a->flag++;
+				do_command(inf, "ra");
+				inf->data->next++;
 			}
 		}
-		if (tmp_a->order <= data->mid)
-			do_command(&tmp_a, &tmp_b, res, "pb");
+		if (inf->stack_a->order <= inf->data->mid)
+			do_command(inf, "pb");
 		else
-			do_command(&tmp_a, &tmp_b, res, "ra");
+			do_command(inf, "ra");
 	}
-	ft_rotate(&tmp_a, &tmp_b, data, res);
-	*a = tmp_a;
-	*b = tmp_b;
+	ft_rotate(inf);
 }

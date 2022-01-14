@@ -18,53 +18,36 @@ static int	ft_sort_3_b_type(int a, int b, int c)
 	return (type);
 }
 
-static void	ft_sort_3_b(t_stack **stack, t_command **result)
+static void	ft_sort_3_b(t_main *inf)
 {
-	t_stack	*p;
 	int		type;
 
-	p = *stack;
-	type = ft_sort_3_b_type(p->order, p->next->order, p->next->next->order);
+	type = ft_sort_3_b_type(inf->stack_b->order, inf->stack_b->next->order, inf->stack_b->next->next->order);
 	if (type == 1)
 	{
-		do_command(NULL, &p, result, "sb");
-		do_command(NULL, &p, result, "rrb");
+		do_command(inf, "sb");
+		do_command(inf, "rrb");
 	}
 	else if (type == 2)
-		do_command(NULL, &p, result, "rb");
+		do_command(inf, "rb");
 	else if (type == 3)
-		do_command(NULL, &p, result, "rrb");
+		do_command(inf, "rrb");
 	else if (type == 4)
-		do_command(NULL, &p, result, "sb");
+		do_command(inf, "sb");
 	else if (type == 5)
 	{
-		do_command(NULL, &p, result, "sb");
-		do_command(NULL, &p, result, "rb");
+		do_command(inf, "sb");
+		do_command(inf, "rb");
 	}
-	*stack = p;
 }
 
-static void	ft_sort_2_b(t_stack **stack, t_command **result)
+void    ft_spec_sort_b(t_main *inf)
 {
-	t_stack	*tmp;
-
-	tmp = *stack;
-	if (tmp->order < tmp->next->order)
-		do_command(NULL, &tmp, result, "sb");
-	*stack = tmp;
-}
-
-void    ft_spec_sort_b(t_stack **stack_a, t_stack **stack_b, t_command **result)
-{
-    t_stack *tmp_a;
-    t_stack *tmp_b;
-
-	tmp_a = *stack_a;
-	tmp_b = *stack_b;
-	if (len_stack(&tmp_b) == 2)
-		ft_sort_2_b(&tmp_b, result);
-    else if (len_stack(&tmp_b) == 3)
-		ft_sort_3_b(&tmp_b, result);
-	*stack_a = tmp_a;
-	*stack_b = tmp_b;
+	if (len_stack(&(inf->stack_b)) == 2)
+	{
+		if (inf->stack_b->order < inf->stack_b->next->order)
+			do_command(inf, "sb");
+	}
+    else if (len_stack(&(inf->stack_b)) == 3)
+		ft_sort_3_b(inf);
 }
