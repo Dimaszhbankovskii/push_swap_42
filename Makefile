@@ -9,11 +9,12 @@ INCLUDES			=	-I./includes
 LIBFT				=	libft.a
 
 SOURCES_DIR			=	srcs/
-SOURCES_LIST		=	ft_push_swap.c \
-						ft_input_validation.c \
-						ft_create_stack_a.c \
-						ft_create_data.c \
-						ft_create_result.c \
+SOURCES_LIST		=	push_swap.c \
+						parsing_input_data.c \
+						input_validation.c \
+						create_stack_a.c \
+						create_data.c \
+						create_result.c \
 						ft_add_command.c \
 						ft_commands_1.c \
 						ft_commands_2.c \
@@ -26,7 +27,8 @@ SOURCES_LIST		=	ft_push_swap.c \
 						ft_output_result.c \
 						ft_sort_3_b.c \
 						ft_print_result.c \
-						ft_free.c
+						free_all.c \
+						error_mess.c
 SOURCES				=	$(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 
 OBJECTS_DIR			=	objs/

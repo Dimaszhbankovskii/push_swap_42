@@ -14,13 +14,13 @@ void	update_data(t_data *data, t_stack **stack)
 	*stack = tmp;
 }
 
-t_data	*create_struct_data(void)
+t_data	*create_struct_data(t_main *inf)
 {
 	t_data	*data;
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
-		return (NULL);
+		exit (error_mess("Error: malloc 'inf->data'\n", inf, 6));
 	data->next = 1;
 	data->mid = 0;
 	data->max = 0;

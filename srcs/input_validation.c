@@ -42,46 +42,46 @@ static long long int	ft_ll_atoi(char const *str)
 	return (num * sign);
 }
 
-static int	check_int(int argc, char **argv)
+static int	check_int(int len, char **arr)
 {
-	int				i;
+	int	i;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (i < len)
 	{
-		if (ft_ll_atoi(argv[i]) < -2147483648 || \
-		ft_ll_atoi(argv[i]) > 2147483647)
+		if (ft_ll_atoi(arr[i]) < -2147483648 || \
+		ft_ll_atoi(arr[i]) > 2147483647)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	input_validation(int argc, char **argv)
+int	input_validation(int len, char **arr)
 {
 	int	i;
 	int	j;
 
-	if (argc < 2)
+	if (len < 1)	// данных нет
 		return (0);
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (arr[i])
 	{
-		if (!str_is_digit(argv[i++]))
-			return (-1);
+		if (!str_is_digit(arr[i++]))
+			return (-1);		// на вход поступило не число
 	}
-	i = 1;
-	while (i < argc - 1)
+	i = 0;
+	while (i < len - 1)
 	{
 		j = i + 1;
-		while (j < argc)
+		while (j < len)
 		{
-			if (ft_strcmp(argv[i], argv[j++]) == 0)
+			if (!ft_strcmp(arr[i], arr[j++])) // одинаковые числа введены
 				return (-1);
 		}
 		i++;
 	}
-	if (!check_int(argc, argv))
+	if (!check_int(len, arr))	// диапазон INT
 		return (-1);
 	return (1);
 }

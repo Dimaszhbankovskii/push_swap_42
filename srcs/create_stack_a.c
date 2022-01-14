@@ -25,29 +25,35 @@ static int	*sort_arr(int *arr, int len)
 	return (arr);
 }
 
-static int	*make_arr(int argc, char **argv)
+static int	*make_arr_int(t_main *inf)
 {
 	int	*array;
 	int	i;
 
-	array = (int *)malloc(sizeof(int) * (argc - 1));
+	array = (int *)malloc(sizeof(int) * len_arr_str(inf->arr_char));
 	if (!array)
 		return (NULL);
 	i = 0;
-	while (i < argc - 1)
+	while (inf->arr_char[i])
 	{
-		array[i] = ft_atoi(argv[i + 1]);
+		array[i] = ft_atoi(inf->arr_char[i]);
 		i++;
 	}
-	array = sort_arr(array, argc - 1);
+	array = sort_arr(array, len_arr_str(inf->arr_char));
 	return (array);
 }
 
-static void	order_stack_a(t_stack **stack, int *arr)
+static t_stack	*order_stack_a(t_stack **stack, int *arr, t_main *inf)
 {
 	t_stack *tmp;
 	int		i;
 
+	if (!arr)
+	{
+		free_stack(stack);
+		free (arr);
+		exit (error_mess("Error: malloc 'stack A'\n", inf, 5));
+	}
 	tmp = *stack;
 	i = 0;
 	while(tmp)
@@ -62,15 +68,16 @@ static void	order_stack_a(t_stack **stack, int *arr)
 			i++;
 	}
 	free (arr);
+	return (*stack);
 }
 
-static t_stack	*create_new_nod(void)
+static t_stack	*create_new_nod(t_main *inf)
 {
 	t_stack	*new;
 
 	new = (t_stack *)malloc((sizeof(t_stack)));
 	if (!new)
-		return (NULL);
+		exit (error_mess("Error: malloc 'stack A'\n", inf, 5));
 	new->value = 0;
 	new->order = 0;
 	new->flag = 0;
@@ -79,28 +86,25 @@ static t_stack	*create_new_nod(void)
 	return (new);
 }
 
-t_stack	*create_stack_a(int argc, char **argv)
+t_stack	*create_stack_a(t_main *inf)
 {
 	t_stack	*stack_a;
 	t_stack	*tmp;
-	int		*arr;
 	int		i;
 
-	arr = make_arr(argc, argv);
-	stack_a = create_new_nod();
+	stack_a = create_new_nod(inf);
 	tmp = stack_a;
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (inf->arr_char[i])
 	{
-		tmp->value = ft_atoi(argv[i]);
-		if (i < argc - 1)
+		tmp->value = ft_atoi(inf->arr_char[i]);
+		if (inf->arr_char[i + 1])
 		{
-			tmp->next = create_new_nod();
+			tmp->next = create_new_nod(inf);
 			tmp->next->prev = tmp;
 			tmp = tmp->next;
 		}
 		i++;
 	}
-	order_stack_a(&stack_a, arr);
-	return (stack_a);
+	return (order_stack_a(&stack_a, make_arr_int(inf), inf));
 }

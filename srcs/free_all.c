@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-static void	free_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;
@@ -55,4 +55,34 @@ t_main	*free_all(t_main *inf)
 	inf->data = NULL;
 	free(inf);
 	return (NULL);
+}
+
+void	free_arr_char(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free (arr[i]);
+		arr[i] = NULL;
+		i++;
+	}
+	free (arr);
+	arr = NULL;
+}
+
+void	free_inf(t_main *inf)
+{
+	if (inf)
+	{
+		free_stack(&(inf->stack_a));
+		free_stack(&(inf->stack_b));
+		free_result(&(inf->result));
+		free(inf->data);
+		inf->data = NULL;
+		free_arr_char(inf->arr_char);
+		free(inf);
+		inf = NULL;
+	}
 }

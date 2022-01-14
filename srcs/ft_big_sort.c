@@ -34,7 +34,7 @@ static void	ft_first_div_a(t_stack **a, t_stack **b, t_data *data, t_command **r
 	*b = tmp_b;
 }
 
-void	ft_big_sort(t_stack **a, t_stack **b, t_data *data, t_command **res)
+void	quick_sort(t_stack **a, t_stack **b, t_data *data, t_command **res)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;

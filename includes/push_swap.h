@@ -36,19 +36,30 @@ typedef struct s_main
 	t_stack		*stack_b;
 	t_data		*data;
 	t_command	*result;
+	char		**arr_char;
 }				t_main;
 
+char		**parsing_input_data(int argc, char **argv, t_main *inf);	// +
 
-int			input_validation(int argc, char **argv);
-t_stack		*create_stack_a(int argc, char **argv);
-t_data		*create_struct_data(void);
+int			input_validation(int len, char **arr); // +
+
+t_stack		*create_stack_a(t_main *inf);	// +
+
+t_data		*create_struct_data(t_main *inf);
+
+t_command	*create_new_result(t_main *inf);
+
 void		update_data(t_data *data, t_stack **stack);
-t_command	*create_new_result(void);
 void		update_output_result(t_command **result);
 void		print_result(t_command **result);
 t_main		*free_all(t_main *inf);
 
-int	check_sort_input_data(int argc, char **argv);
+void		free_inf(t_main *inf); // +
+void		free_arr_char(char **arr);
+void		free_stack(t_stack **stack);
+int			error_mess(char	*mess, t_main *inf, int num_error); // +
+
+int			check_sort_input_data(char **arr); // +
 
 //--------- commands ----------------------
 void		do_command(t_stack **stack_a, t_stack **stack_b, t_command **result, char const *str);
@@ -72,7 +83,8 @@ void		ft_spec_sort_b(t_stack **stack_a, t_stack **stack_b, t_command **result);
 
 //-----------------------------------------
 //--------- big sort ----------------------
-void		ft_big_sort(t_stack **a, t_stack **b, t_data *data, t_command **res);
+void		quick_sort(t_stack **a, t_stack **b, t_data *data, t_command **res);
+
 void		ft_block_1(t_stack **a, t_stack **b, t_data *data, t_command **res);
 void		ft_block_2(t_stack **a, t_stack **b, t_data *data, t_command **res);
 void		ft_div_b(t_stack **a, t_stack **b, t_data *data, t_command **res);
@@ -86,6 +98,8 @@ int			find_order(t_stack **stack, int order);
 t_stack		*end_stack(t_stack **stack);
 int			check_sort_stack(t_stack **stack);
 int			ft_count_unsort_big(t_stack **stack);
+
+int			len_arr_str(char **arr); // +
 
 
 int			ft_count_commands(t_command **result);

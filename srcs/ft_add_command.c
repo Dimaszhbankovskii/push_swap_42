@@ -10,7 +10,7 @@ void	write_command(t_command **result, char const *str, int done)
 	if (done == 1)
 	{
 		tmp->command = ft_strdup(str);
-		tmp->next = create_new_result();
+		tmp->next = create_new_result(NULL);
 		tmp->next->prev = tmp;
 	}
 }
