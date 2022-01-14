@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-int	ft_sa_sb(t_stack **stack)
+int	sa_sb(t_stack **stack)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;
@@ -22,7 +22,7 @@ int	ft_sa_sb(t_stack **stack)
 		return (0);
 }
 
-int	ft_pa_pb(t_stack **stack_from, t_stack **stack_to)
+int	pa_pb(t_stack **stack_from, t_stack **stack_to)
 {
 	t_stack	*from;
 	t_stack	*to;
@@ -39,7 +39,6 @@ int	ft_pa_pb(t_stack **stack_from, t_stack **stack_to)
 		to->next = NULL;
 		to->prev = NULL;
 		*stack_to = to;
-		return (1);
 	}
 	else
 	{
@@ -48,12 +47,11 @@ int	ft_pa_pb(t_stack **stack_from, t_stack **stack_to)
 		*stack_to = from;
 		if (*stack_from)
 			(*stack_from)->prev = NULL;
-		return (1);
 	}
-	return (0);
+	return (1);
 }
 
-int	ft_ra_rb(t_stack **stack)
+int	ra_rb(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*end;
@@ -61,9 +59,7 @@ int	ft_ra_rb(t_stack **stack)
 	tmp = *stack;
 	if (!tmp || !tmp->next)
 		return (0);
-	end = *stack;
-	while (end->next)
-		end = end->next;
+	end = end_stack(stack);
 	*stack = tmp->next;
 	(*stack)->prev = NULL;
 	end->next = tmp;

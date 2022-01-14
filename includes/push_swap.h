@@ -64,11 +64,11 @@ int			check_sort_input_data(char **arr); // +
 //--------- commands ----------------------
 void		do_command(t_main *inf, char const *str);
 void		write_command(t_main *inf, char const *str, int done);
-int			ft_sa_sb(t_stack **stack);
-int			ft_ss(t_stack **stack_a, t_stack **stack_b);
-int			ft_pa_pb(t_stack **stack_from, t_stack **stack_to);
-int			ft_ra_rb(t_stack **stack);
-int			ft_rr(t_stack **stack_a, t_stack **stack_b);
+int			sa_sb(t_stack **stack);
+int			ss(t_stack **stack_a, t_stack **stack_b);
+int			pa_pb(t_stack **stack_from, t_stack **stack_to);
+int			ra_rb(t_stack **stack);
+int			rr(t_stack **stack_a, t_stack **stack_b);
 int			ft_rra_rrb(t_stack **stack);
 int			ft_rrr(t_stack **stack_a, t_stack **stack_b);
 //-----------------------------------------
