@@ -23,8 +23,6 @@ SOURCES_LIST		=	push_swap.c \
 						quick_sort.c \
 						sort_half_stack_a_1.c \
 						sort_half_stack_a_2.c \
-						partition_half_stack_a.c \
-						ft_special_sort.c \
 						ft_output_result.c \
 						ft_print_result.c \
 						free_all.c \

@@ -78,15 +78,11 @@ int			ft_rrr(t_stack **stack_a, t_stack **stack_b);
 void		private_sort(t_main *inf);
 
 
-void		ft_special_sort(t_main *inf);
-void		ft_spec_sort_b(t_main *inf);
-
 //-----------------------------------------
 //--------- quick sort ----------------------
 void		quick_sort(t_main *inf);
 void		sort_half_stack_a(t_main *inf);
 void		sort_move_b(t_main *inf);
-void		next_partition_a(t_main *inf);
 
 //---------- utils stack -------------------
 int			len_stack(t_stack **stack);
