@@ -20,6 +20,7 @@ SOURCES_LIST		=	push_swap.c \
 						commands_2.c \
 						utils_stack_1.c \
 						utils_stack_2.c \
+						private_sort.c \
 						quick_sort.c \
 						sort_half_stack_a_1.c \
 						sort_half_stack_a_2.c \

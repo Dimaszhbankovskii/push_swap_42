@@ -61,7 +61,6 @@ int			error_mess(char	*mess, t_main *inf, int num_error); // +
 
 int			check_sort_input_data(char **arr); // +
 
-//--------- commands ----------------------
 void		do_command(t_main *inf, char const *str);
 void		write_command(t_main *inf, char const *str, int done);
 int			sa_sb(t_stack **stack);
@@ -71,20 +70,12 @@ int			ra_rb(t_stack **stack);
 int			rr(t_stack **stack_a, t_stack **stack_b);
 int			rra_rrb(t_stack **stack);
 int			rrr(t_stack **stack_a, t_stack **stack_b);
-//-----------------------------------------
-//--------- quick sort --------------------
-
 
 void		private_sort(t_main *inf);
-
-
-//-----------------------------------------
-//--------- quick sort ----------------------
 void		quick_sort(t_main *inf);
 void		sort_half_stack_a(t_main *inf);
 void		sort_move_b(t_main *inf);
 
-//---------- utils stack -------------------
 int			len_stack(t_stack **stack);
 int			find_min_value_order(t_stack **stack);
 int			find_max_value_order(t_stack **stack);

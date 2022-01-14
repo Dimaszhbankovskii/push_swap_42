@@ -40,10 +40,10 @@ char	*push_swap(t_main *inf)
 	inf->stack_a = create_stack_a(inf);		// +
 	inf->data = create_struct_data(inf);	// +
 	inf->result = create_new_result(inf);	// +
-	// if (len_arr_str(inf->arr_char) < 6)
-	// 	private_sort(inf);
-	// else
-	quick_sort(inf);
+	if (len_arr_str(inf->arr_char) < 6)
+		private_sort(inf);
+	else
+		quick_sort(inf);
 	update_output_result(&(inf->result));
 	res = list_to_str(&(inf->result));
 	return (res);
