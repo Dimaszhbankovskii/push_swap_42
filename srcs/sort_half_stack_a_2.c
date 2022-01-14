@@ -1,28 +1,28 @@
 #include "../includes/push_swap.h"
 
-static int	ft_sort_3_b_type(int a, int b, int c)
+static int	type_sort_b_3(int a, int b, int c)
 {
 	int	type;
 
 	type = 0;
-	if (a < b && b < c && a < c) // 1 2 3
+	if (a < b && b < c && a < c)
 		type = 1;
-	else if (a < b && b > c && a < c) // 1 3 2
+	else if (a < b && b > c && a < c)
 		type = 2;
-	else if (a > b && b < c && a < c) // 2 1 3
+	else if (a > b && b < c && a < c)
 		type = 3;
-	else if (a < b && b > c && a > c) // 2 3 1
+	else if (a < b && b > c && a > c)
 		type = 4;
-	else if (a > b && b < c && a > c) // 3 1 2
+	else if (a > b && b < c && a > c)
 		type = 5;
 	return (type);
 }
 
-static void	ft_sort_3_b(t_main *inf)
+static void	private_sort_b_3(t_main *inf)
 {
-	int		type;
+	int	type;
 
-	type = ft_sort_3_b_type(inf->stack_b->order, inf->stack_b->next->order, inf->stack_b->next->next->order);
+	type = type_sort_b_3(inf->stack_b->order, inf->stack_b->next->order, inf->stack_b->next->next->order);
 	if (type == 1)
 	{
 		do_command(inf, "sb");
@@ -41,7 +41,7 @@ static void	ft_sort_3_b(t_main *inf)
 	}
 }
 
-void    ft_spec_sort_b(t_main *inf)
+void	sort_move_b(t_main *inf)
 {
 	if (len_stack(&(inf->stack_b)) == 2)
 	{
@@ -49,5 +49,10 @@ void    ft_spec_sort_b(t_main *inf)
 			do_command(inf, "sb");
 	}
     else if (len_stack(&(inf->stack_b)) == 3)
-		ft_sort_3_b(inf);
+		private_sort_b_3(inf);
+	while (len_stack(&(inf->stack_b)))
+	{
+		inf->stack_b->flag = inf->data->flag;
+		do_command(inf, "pa");
+	}
 }

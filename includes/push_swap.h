@@ -82,14 +82,11 @@ void		ft_special_sort(t_main *inf);
 void		ft_spec_sort_b(t_main *inf);
 
 //-----------------------------------------
-//--------- big sort ----------------------
+//--------- quick sort ----------------------
 void		quick_sort(t_main *inf);
-
-void		ft_block_1(t_main *inf);
-
-void		ft_block_2(t_main *inf);
-void		partition_b(t_main *inf);
-void		partition_a(t_main *inf);
+void		sort_half_stack_a(t_main *inf);
+void		sort_move_b(t_main *inf);
+void		next_partition_a(t_main *inf);
 
 //---------- utils stack -------------------
 int			len_stack(t_stack **stack);
@@ -98,7 +95,9 @@ int			find_max_value_order(t_stack **stack);
 int			find_order(t_stack **stack, int order);
 t_stack		*end_stack(t_stack **stack);
 int			check_sort_stack(t_stack **stack);
-int			ft_count_unsort_big(t_stack **stack);
+int			count_unsort_stack_a(t_stack **stack);
+
+
 
 int			len_arr_str(char **arr); // +
 

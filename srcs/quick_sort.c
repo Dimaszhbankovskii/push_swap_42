@@ -32,9 +32,9 @@ void	quick_sort(t_main *inf)
 	first_partition_a(inf);
 	while (!check_sort_stack(&(inf->stack_a)) || inf->stack_b)
 	{
-		ft_block_1(inf);
-		if (ft_count_unsort_big(&(inf->stack_a)) >= 3)
-			ft_block_2(inf);
+		sort_half_stack_a(inf);
+		if (count_unsort_stack_a(&(inf->stack_a)) >= 3)
+			next_partition_a(inf);
 		else
 			ft_special_sort(inf);
 	}

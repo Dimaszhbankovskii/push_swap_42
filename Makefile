@@ -18,13 +18,14 @@ SOURCES_LIST		=	push_swap.c \
 						add_command.c \
 						ft_commands_1.c \
 						ft_commands_2.c \
-						ft_utils_stack.c \
+						utils_stack_1.c \
+						utils_stack_2.c \
 						quick_sort.c \
-						ft_big_sort_block_1.c \
-						ft_big_sort_block_2.c \
+						sort_half_stack_a_1.c \
+						sort_half_stack_a_2.c \
+						partition_half_stack_a.c \
 						ft_special_sort.c \
 						ft_output_result.c \
-						ft_sort_3_b.c \
 						ft_print_result.c \
 						free_all.c \
 						error_mess.c

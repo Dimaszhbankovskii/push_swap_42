@@ -3,7 +3,7 @@
 int	len_stack(t_stack **stack)
 {
 	t_stack	*tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	tmp = *stack;
@@ -78,33 +78,4 @@ t_stack	*end_stack(t_stack **stack)
 	while (tmp->next)
 		tmp = tmp->next;
 	return (tmp);
-}
-
-int	check_sort_stack(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	tmp = *stack;
-	while (tmp->next)
-	{
-		if (tmp->order > tmp->next->order)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
-int	ft_count_unsort_big(t_stack **stack)
-{
-	t_stack	*tmp;
-	int		count;
-
-	tmp = *stack;
-	count = 0;
-	while (tmp->flag == 0)
-	{
-		count++;
-		tmp = tmp->next;
-	}
-	return (count);
 }

@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-static void	ft_rotate(t_main *inf)
+static void	rotate_a_b(t_main *inf)
 {
 	t_stack	*end_a;
 
@@ -15,7 +15,7 @@ static void	ft_rotate(t_main *inf)
 	}
 }
 
-void	ft_block_2(t_main *inf)
+void	next_partition_a(t_main *inf)
 {
 	update_data(inf->data, &(inf->stack_a));
 	while (!(inf->stack_a->flag))
@@ -34,5 +34,5 @@ void	ft_block_2(t_main *inf)
 		else
 			do_command(inf, "ra");
 	}
-	ft_rotate(inf);
+	rotate_a_b(inf);
 }
