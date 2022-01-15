@@ -18,16 +18,17 @@ SOURCES_LIST		=	push_swap.c \
 						add_command.c \
 						commands_1.c \
 						commands_2.c \
+						utils.c \
 						utils_stack_1.c \
 						utils_stack_2.c \
 						private_sort.c \
 						quick_sort.c \
 						sort_half_stack_a_1.c \
 						sort_half_stack_a_2.c \
-						ft_output_result.c \
-						ft_print_result.c \
-						free_all.c \
-						error_mess.c
+						output_result.c \
+						get_result.c \
+						free_all.c
+
 SOURCES				=	$(addprefix $(SOURCES_DIR), $(SOURCES_LIST))
 
 OBJECTS_DIR			=	objs/

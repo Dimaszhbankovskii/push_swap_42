@@ -1,15 +1,5 @@
 #include "../includes/push_swap.h"
 
-int	len_arr_str(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		i++;
-	return (i);
-}
-
 static char	**dup_arr(char **arr, int len)
 {
 	char	**out;

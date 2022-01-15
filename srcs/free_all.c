@@ -46,17 +46,6 @@ static void	free_result(t_command **result)
 	}
 }
 
-t_main	*free_all(t_main *inf)
-{
-	free_stack(&(inf->stack_a));
-	free_stack(&(inf->stack_b));
-	free_result(&(inf->result));
-	free(inf->data);
-	inf->data = NULL;
-	free(inf);
-	return (NULL);
-}
-
 void	free_arr_char(char **arr)
 {
 	int	i;

@@ -1,19 +1,6 @@
 #include "../includes/push_swap.h"
 
-void	print_result(t_command **result)
-{
-	t_command	*tmp;
-
-	tmp = *result;
-	while (tmp->command)
-	{
-		ft_putstr_fd(tmp->command, 1);
-		ft_putchar_fd('\n', 1);
-		tmp = tmp->next;
-	}
-}
-
-char	*make_str(char *s1, char *s2)
+static char	*make_str(char *s1, char *s2)
 {
 	char	*str1;
 	char	*str2;
@@ -22,24 +9,30 @@ char	*make_str(char *s1, char *s2)
 	{
 		str1 = ft_strjoin(s1, "\n");
 		free (s1);
+		if (!str1)
+			return (NULL);
 	}
 	else
 		str1 = s1;
 	str2 = ft_strjoin(str1, s2);
 	free (str1);
+	if (!str2)
+		return (NULL);
 	return (str2);
 }
 
-char	*list_to_str(t_command **result)
+char	*get_result(t_main *inf)
 {
 	char		*str;
 	t_command	*tmp;
 
-	tmp = *result;
+	tmp = inf->result;
 	str = NULL;
 	while (tmp->command)
 	{
 		str = make_str(str, tmp->command);
+		if (!str)
+			exit(error_mess("Error: malloc 'get_res'\n", inf, 10));
 		tmp = tmp->next;
 	}
 	return (str);
