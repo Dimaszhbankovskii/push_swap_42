@@ -22,7 +22,8 @@ static void	private_sort_3(t_main *inf)
 {
 	int		type;
 
-	type = sort_3_type(inf->stack_a->order, inf->stack_a->next->order, inf->stack_a->next->next->order);
+	type = sort_3_type(inf->a->order, \
+	inf->a->next->order, inf->a->next->next->order);
 	if (type == 1)
 	{
 		do_command(inf, "sa");
@@ -43,11 +44,11 @@ static void	private_sort_3(t_main *inf)
 
 static void	private_sort_4(t_main *inf)
 {
-	while (inf->stack_a->order != find_min_value_order(&(inf->stack_a)))
+	while (inf->a->order != find_min_value_order(&(inf->a)))
 	{
-		if (find_order(&(inf->stack_a), find_min_value_order(&(inf->stack_a))) <= 2)
+		if (find_order(&(inf->a), find_min_value_order(&(inf->a))) <= 2)
 			do_command(inf, "sa");
-		else if (find_order(&(inf->stack_a), find_min_value_order(&(inf->stack_a))) > 2)
+		else if (find_order(&(inf->a), find_min_value_order(&(inf->a))) > 2)
 			do_command(inf, "rra");
 	}
 	do_command(inf, "pb");
@@ -57,13 +58,13 @@ static void	private_sort_4(t_main *inf)
 
 static void	private_sort_5(t_main *inf)
 {
-	while (inf->stack_a->order != find_min_value_order(&(inf->stack_a)))
+	while (inf->a->order != find_min_value_order(&(inf->a)))
 	{
-		if (find_order(&(inf->stack_a), find_min_value_order(&(inf->stack_a))) <= 2)
+		if (find_order(&(inf->a), find_min_value_order(&(inf->a))) <= 2)
 			do_command(inf, "sa");
-		else if (find_order(&(inf->stack_a), find_min_value_order(&(inf->stack_a))) == 3)
+		else if (find_order(&(inf->a), find_min_value_order(&(inf->a))) == 3)
 			do_command(inf, "ra");
-		else if (find_order(&(inf->stack_a), find_min_value_order(&(inf->stack_a))) >= 4)
+		else if (find_order(&(inf->a), find_min_value_order(&(inf->a))) >= 4)
 			do_command(inf, "rra");
 	}
 	do_command(inf, "pb");
@@ -73,15 +74,15 @@ static void	private_sort_5(t_main *inf)
 
 void	private_sort(t_main *inf)
 {
-	if (len_stack(&(inf->stack_a)) == 2)
+	if (len_stack(&(inf->a)) == 2)
 	{
-		if (inf->stack_a->order > inf->stack_a->next->order)
+		if (inf->a->order > inf->a->next->order)
 			do_command(inf, "sa");
 	}
-	else if (len_stack(&(inf->stack_a)) == 3)
+	else if (len_stack(&(inf->a)) == 3)
 		private_sort_3(inf);
-	else if (len_stack(&(inf->stack_a)) == 4)
+	else if (len_stack(&(inf->a)) == 4)
 		private_sort_4(inf);
-	else if (len_stack(&(inf->stack_a)) == 5)
+	else if (len_stack(&(inf->a)) == 5)
 		private_sort_5(inf);
 }

@@ -4,10 +4,10 @@ static void	partition_a(t_main *inf)
 {
 	int		flag;
 
-	flag = inf->stack_a->flag;
-	while (inf->stack_a->flag == flag)
+	flag = inf->a->flag;
+	while (inf->a->flag == flag)
 	{
-		if (inf->stack_a->order == inf->data->next)
+		if (inf->a->order == inf->data->next)
 		{
 			do_command(inf, "ra");
 			inf->data->next++;
@@ -19,16 +19,16 @@ static void	partition_a(t_main *inf)
 
 static void	move_b(t_main *inf)
 {
-	if (inf->stack_b->order == inf->data->next)
+	if (inf->b->order == inf->data->next)
 	{
-		inf->stack_b->flag = inf->data->flag;
+		inf->b->flag = inf->data->flag;
 		do_command(inf, "pa");
 		do_command(inf, "ra");
 		inf->data->next++;
 	}
-	if (inf->stack_b && inf->stack_b->order >= inf->data->mid)
+	if (inf->b && inf->b->order >= inf->data->mid)
 	{
-		inf->stack_b->flag = inf->data->flag;
+		inf->b->flag = inf->data->flag;
 		do_command(inf, "pa");
 	}
 	else
@@ -51,20 +51,20 @@ static int	check_move_b(t_stack **stack, t_data *data)
 
 static void	partition_b(t_main *inf)
 {
-	while (inf->stack_b && len_stack(&(inf->stack_b)) > 3)
+	while (inf->b && len_stack(&(inf->b)) > 3)
 	{
-		update_data(inf->data, &(inf->stack_b));
-		while (inf->stack_b && check_move_b(&(inf->stack_b), inf->data))
+		update_data(inf->data, &(inf->b));
+		while (inf->b && check_move_b(&(inf->b), inf->data))
 			move_b(inf);
 	}
-	if (inf->stack_b && len_stack(&(inf->stack_b)) <= 3)
+	if (inf->b && len_stack(&(inf->b)) <= 3)
 		sort_move_b(inf);
 }
 
 void	sort_half_stack_a(t_main *inf)
 {
 	partition_b(inf);
-	while (inf->stack_a->flag)
+	while (inf->a->flag)
 	{
 		partition_a(inf);
 		partition_b(inf);

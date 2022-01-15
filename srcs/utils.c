@@ -1,5 +1,20 @@
 #include "../includes/push_swap.h"
 
+t_main	*init_inf(void)
+{
+	t_main	*inf;
+
+	inf = (t_main *)malloc(sizeof(t_main));
+	if (!inf)
+		exit(error_mess("Error: malloc 'inf'\n", NULL, 1));
+	inf->a = NULL;
+	inf->b = NULL;
+	inf->data = NULL;
+	inf->res = NULL;
+	inf->arr_char = NULL;
+	return (inf);
+}
+
 int	check_sort_input_data(char **arr)
 {
 	int	i;

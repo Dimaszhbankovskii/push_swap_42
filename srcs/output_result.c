@@ -92,7 +92,7 @@ void	update_output_result(t_main *inf)
 {
 	t_command	*tmp;
 
-	tmp = inf->result;
+	tmp = inf->res;
 	while (tmp->command && tmp->next->command)
 	{
 		if (check_comb_command(tmp, tmp->next))
@@ -105,7 +105,7 @@ void	update_output_result(t_main *inf)
 				replace_command(&tmp, "rrr", inf);
 			else if (check_comb_command(tmp, tmp->next) == 4)
 				delete_2_commands(&tmp);
-			tmp = inf->result;
+			tmp = inf->res;
 		}
 		else
 			tmp = tmp->next;

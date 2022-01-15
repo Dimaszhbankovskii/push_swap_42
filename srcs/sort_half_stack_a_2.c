@@ -22,7 +22,8 @@ static void	private_sort_b_3(t_main *inf)
 {
 	int	type;
 
-	type = type_sort_b_3(inf->stack_b->order, inf->stack_b->next->order, inf->stack_b->next->next->order);
+	type = type_sort_b_3(inf->b->order, \
+	inf->b->next->order, inf->b->next->next->order);
 	if (type == 1)
 	{
 		do_command(inf, "sb");
@@ -43,16 +44,16 @@ static void	private_sort_b_3(t_main *inf)
 
 void	sort_move_b(t_main *inf)
 {
-	if (len_stack(&(inf->stack_b)) == 2)
+	if (len_stack(&(inf->b)) == 2)
 	{
-		if (inf->stack_b->order < inf->stack_b->next->order)
+		if (inf->b->order < inf->b->next->order)
 			do_command(inf, "sb");
 	}
-    else if (len_stack(&(inf->stack_b)) == 3)
+	else if (len_stack(&(inf->b)) == 3)
 		private_sort_b_3(inf);
-	while (len_stack(&(inf->stack_b)))
+	while (len_stack(&(inf->b)))
 	{
-		inf->stack_b->flag = inf->data->flag;
+		inf->b->flag = inf->data->flag;
 		do_command(inf, "pa");
 	}
 }

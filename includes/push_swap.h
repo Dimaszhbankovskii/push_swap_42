@@ -16,11 +16,11 @@ typedef struct s_data
 {
 	int	next;
 	int	mid;
-	int max;
-	int flag;
+	int	max;
+	int	flag;
 }					t_data;
 
-typedef	struct s_command
+typedef struct s_command
 {
 	char				*command;
 	struct s_command	*next;
@@ -29,13 +29,14 @@ typedef	struct s_command
 
 typedef struct s_main
 {
-	t_stack		*stack_a;
-	t_stack		*stack_b;
+	t_stack		*a;
+	t_stack		*b;
 	t_data		*data;
-	t_command	*result;
+	t_command	*res;
 	char		**arr_char;
 }				t_main;
 
+t_main		*init_inf(void);
 char		**parsing_input_data(int argc, char **argv, t_main *inf);
 int			input_validation(int len, char **arr);
 t_stack		*create_stack_a(t_main *inf);

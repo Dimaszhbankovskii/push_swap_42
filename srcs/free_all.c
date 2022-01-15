@@ -22,14 +22,14 @@ void	free_stack(t_stack **stack)
 	}
 }
 
-static void	free_result(t_command **result)
+static void	free_result(t_command **res)
 {
 	t_command	*tmp1;
 	t_command	*tmp2;
 
-	if (*result)
+	if (*res)
 	{
-		tmp1 = *result;
+		tmp1 = *res;
 		tmp2 = tmp1->next;
 		while (tmp1)
 		{
@@ -42,7 +42,7 @@ static void	free_result(t_command **result)
 			if (tmp2)
 				tmp2 = tmp2->next;
 		}
-		*result = NULL;
+		*res = NULL;
 	}
 }
 
@@ -65,9 +65,9 @@ void	free_inf(t_main *inf)
 {
 	if (inf)
 	{
-		free_stack(&(inf->stack_a));
-		free_stack(&(inf->stack_b));
-		free_result(&(inf->result));
+		free_stack(&(inf->a));
+		free_stack(&(inf->b));
+		free_result(&(inf->res));
 		free(inf->data);
 		inf->data = NULL;
 		free_arr_char(inf->arr_char);

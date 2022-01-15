@@ -26,7 +26,7 @@ char	*get_result(t_main *inf)
 	char		*str;
 	t_command	*tmp;
 
-	tmp = inf->result;
+	tmp = inf->res;
 	str = NULL;
 	while (tmp->command)
 	{

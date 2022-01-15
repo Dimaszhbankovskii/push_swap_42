@@ -45,7 +45,7 @@ static int	*make_arr_int(t_main *inf)
 
 static t_stack	*order_stack_a(t_stack **stack, int *arr, t_main *inf)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		i;
 
 	if (!arr)
@@ -56,7 +56,7 @@ static t_stack	*order_stack_a(t_stack **stack, int *arr, t_main *inf)
 	}
 	tmp = *stack;
 	i = 0;
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->value == arr[i])
 		{

@@ -1,25 +1,10 @@
 #include "../includes/push_swap.h"
 
-static t_main	*init_inf(void)
-{
-	t_main	*inf;
-
-	inf = (t_main *)malloc(sizeof(t_main));
-	if (!inf)
-		exit(error_mess("Error: malloc 'inf'\n", NULL, 1));
-	inf->stack_a = NULL;
-	inf->stack_b = NULL;
-	inf->data = NULL;
-	inf->result = NULL;
-	inf->arr_char = NULL;
-	return (inf);
-}
-
 static char	*push_swap(t_main *inf)
 {
-	inf->stack_a = create_stack_a(inf);
+	inf->a = create_stack_a(inf);
 	inf->data = create_struct_data(inf);
-	inf->result = create_new_result(inf);
+	inf->res = create_new_result(inf);
 	if (len_arr_str(inf->arr_char) < 6)
 		private_sort(inf);
 	else

@@ -7,7 +7,7 @@ static char	**dup_arr(char **arr, int len)
 
 	out = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!out)
-        return (NULL);
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{

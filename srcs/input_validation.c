@@ -62,13 +62,13 @@ int	input_validation(int len, char **arr)
 	int	i;
 	int	j;
 
-	if (len < 1)	// данных нет
+	if (len < 1)
 		return (0);
 	i = 0;
 	while (arr[i])
 	{
 		if (!str_is_digit(arr[i++]))
-			return (-1);		// на вход поступило не число
+			return (-1);
 	}
 	i = 0;
 	while (i < len - 1)
@@ -76,12 +76,12 @@ int	input_validation(int len, char **arr)
 		j = i + 1;
 		while (j < len)
 		{
-			if (!ft_strcmp(arr[i], arr[j++])) // одинаковые числа введены
+			if (!ft_strcmp(arr[i], arr[j++]))
 				return (-1);
 		}
 		i++;
 	}
-	if (!check_int(len, arr))	// диапазон INT
+	if (!check_int(len, arr))
 		return (-1);
 	return (1);
 }
