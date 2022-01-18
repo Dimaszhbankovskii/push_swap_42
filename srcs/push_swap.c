@@ -7,6 +7,9 @@ static char	*push_swap(t_main *inf)
 	inf->res = create_new_result(inf);
 	if (len_arr_str(inf->arr_char) < 6)
 		private_sort(inf);
+	else if (len_arr_str(inf->arr_char) >= 6 && \
+	len_arr_str(inf->arr_char) <= 200)
+		insert_sort(inf);
 	else
 		quick_sort(inf);
 	update_output_result(inf);

@@ -3,11 +3,23 @@
 
 # include "../libft/libft.h"
 
+# include <stdio.h>
+
+typedef struct s_score
+{
+	int	score_ra;
+	int	score_rra;
+	int	score_rb;
+	int	score_rrb;
+	int	score_all;
+}				t_score;
+
 typedef struct s_stack
 {
 	int				value;
 	int				order;
 	int				flag;
+	struct s_score	*score;	//
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
@@ -18,7 +30,15 @@ typedef struct s_data
 	int	mid;
 	int	max;
 	int	flag;
-}					t_data;
+}				t_data;
+
+typedef struct s_insert
+{
+	int	min;
+	int	max;
+	int	median;
+}				t_insert;
+
 
 typedef struct s_command
 {
@@ -32,6 +52,7 @@ typedef struct s_main
 	t_stack		*a;
 	t_stack		*b;
 	t_data		*data;
+	t_insert	*insert;
 	t_command	*res;
 	char		**arr_char;
 }				t_main;
@@ -59,6 +80,11 @@ int			rra_rrb(t_stack **stack);
 int			rrr(t_stack **stack_a, t_stack **stack_b);
 
 void		private_sort(t_main *inf);
+
+void		insert_sort(t_main *inf);
+void		do_insert_sort(t_main *inf);
+void		count_score(t_main *inf);
+
 void		quick_sort(t_main *inf);
 void		sort_half_stack_a(t_main *inf);
 void		sort_move_b(t_main *inf);
@@ -76,5 +102,8 @@ int			check_sort_input_data(char **arr);
 int			len_arr_str(char **arr);
 int			error_mess(char	*mess, t_main *inf, int num_error);
 void		print_result(char *res);
+
+//----------------------------------
+void	print_stack(t_stack *stack);
 
 #endif

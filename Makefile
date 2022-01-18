@@ -23,12 +23,16 @@ SOURCES_LIST_PS		=	push_swap.c \
 						utils_stack_1.c \
 						utils_stack_2.c \
 						private_sort.c \
+						insert_sort_1.c \
+						insert_sort_2.c \
+						insert_sort_count_score.c \
 						quick_sort.c \
 						sort_half_stack_a_1.c \
 						sort_half_stack_a_2.c \
 						output_result.c \
 						get_result.c \
-						free_all.c
+						free_all.c \
+						del_utils.c
 SOURCES_PS				=	$(addprefix $(SOURCES_DIR), $(SOURCES_LIST_PS))
 
 SOURCES_LIST_CHECKER	=	checker.c \

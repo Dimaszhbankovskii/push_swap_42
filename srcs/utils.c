@@ -10,6 +10,7 @@ t_main	*init_inf(void)
 	inf->a = NULL;
 	inf->b = NULL;
 	inf->data = NULL;
+	inf->insert = NULL;
 	inf->res = NULL;
 	inf->arr_char = NULL;
 	return (inf);

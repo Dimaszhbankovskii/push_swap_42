@@ -70,6 +70,8 @@ void	free_inf(t_main *inf)
 		free_result(&(inf->res));
 		free(inf->data);
 		inf->data = NULL;
+		free(inf->insert);
+		inf->insert = NULL;
 		free_arr_char(inf->arr_char);
 		free(inf);
 		inf = NULL;

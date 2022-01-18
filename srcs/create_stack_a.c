@@ -81,6 +81,7 @@ static t_stack	*create_new_nod(t_main *inf)
 	new->value = 0;
 	new->order = 0;
 	new->flag = 0;
+	new->score = NULL; //
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
