@@ -1,37 +1,37 @@
-PUSH_SWAP			=	push_swap
-CHECKER				=	checker
+PUSH_SWAP				=	push_swap
+CHECKER					=	checker
 
-CC					=	gcc
-CFLAGS				=	-Wall -Werror -Wextra
-LIBRARIES			=	-L./libft -lft
-INCLUDES			=	-I./includes
+CC						=	gcc
+CFLAGS					=	-Wall -Werror -Wextra
+LIBRARIES				=	-L./libft -lft
+INCLUDES				=	-I./includes
 
-LIBFT				=	./libft/libft.a
-HEADER				=	./includes/push_swap.h
+LIBFT					=	./libft/libft.a
+HEADER					=	./includes/push_swap.h
 
-SOURCES_DIR			=	srcs/
-SOURCES_LIST_PS		=	push_swap.c \
-						parsing_input_data.c \
-						input_validation.c \
-						create_stack_a.c \
-						create_data.c \
-						create_result.c \
-						add_command.c \
-						commands_1.c \
-						commands_2.c \
-						utils.c \
-						utils_stack_1.c \
-						utils_stack_2.c \
-						private_sort.c \
-						insert_sort_1.c \
-						insert_sort_2.c \
-						insert_sort_count_score.c \
-						quick_sort.c \
-						sort_half_stack_a_1.c \
-						sort_half_stack_a_2.c \
-						output_result.c \
-						get_result.c \
-						free_all.c
+SOURCES_DIR				=	srcs/
+SOURCES_LIST_PS			=	push_swap.c \
+							parsing_input_data.c \
+							input_validation.c \
+							create_stack_a.c \
+							create_data.c \
+							create_result.c \
+							add_command.c \
+							commands_1.c \
+							commands_2.c \
+							utils.c \
+							utils_stack_1.c \
+							utils_stack_2.c \
+							private_sort.c \
+							insert_sort_1.c \
+							insert_sort_2.c \
+							insert_sort_count_score.c \
+							quick_sort.c \
+							sort_half_stack_a_1.c \
+							sort_half_stack_a_2.c \
+							output_result.c \
+							get_result.c \
+							free_all.c
 SOURCES_PS				=	$(addprefix $(SOURCES_DIR), $(SOURCES_LIST_PS))
 
 SOURCES_LIST_CHECKER	=	checker.c \
@@ -44,50 +44,43 @@ SOURCES_LIST_CHECKER	=	checker.c \
 							utils_stack_2.c \
 							utils.c \
 							free_all.c
-SOURCES_CHECKER		=	$(addprefix $(SOURCES_DIR), $(SOURCES_LIST_CHECKER))
+SOURCES_CHECKER			=	$(addprefix $(SOURCES_DIR), $(SOURCES_LIST_CHECKER))
 
-OBJECTS_DIR			=	objs/
-OBJECTS_LIST_PS		=	${patsubst %.c, %.o, ${SOURCES_LIST_PS}}
-OBJECTS_PS			=	$(addprefix $(OBJECTS_DIR), $(OBJECTS_LIST_PS))
+OBJECTS_LIST_PS			=	${patsubst %.c, %.o, ${SOURCES_LIST_PS}}
 
 OBJECTS_LIST_CHECKER	=	${patsubst %.c, %.o, ${SOURCES_LIST_CHECKER}}
-OBJECTS_CHECKER			=	$(addprefix $(OBJECTS_DIR), $(OBJECTS_LIST_CHECKER))
 
 all : ${PUSH_SWAP}
 
-${PUSH_SWAP} : Makefile ${HEADER} ${LIBFT} $(OBJECTS_DIR) $(OBJECTS_PS) $(SOURCES_PS)
-	@${CC} ${CFLAGS} ${OBJECTS_PS} -o ${PUSH_SWAP} ${LIBRARIES} ${INCLUDES}
-	@echo "'${PUSH_SWAP}' was created"
+${PUSH_SWAP} : Makefile $(HEADER) $(LIBFT) $(OBJECTS_LIST_PS)
+	@${CC} ${CFLAGS} -o $@ ${OBJECTS_LIST_PS} ${LIBRARIES} ${INCLUDES}
+	@printf "'${PUSH_SWAP}' was compiled\n"
 
 $(LIBFT) : ./libft/Makefile ./libft/libft.h ./libft/*.c
-	@$(MAKE) -C ./libft
-	@$(MAKE) bonus -C ./libft
-	@echo "libft was created"
+	@make -C ./libft
+	@make bonus -C ./libft
+	@printf "libft was compiled\n"
 
-$(addprefix $(OBJECTS_DIR), %.o) : $(addprefix $(SOURCES_DIR), %.c) $(OBJECTS_DIR)
-	@$(CC) -c $(CFLAGS) $< -o $@ $(INCLUDES)
-
-$(OBJECTS_DIR) :
-	@mkdir -p $@
-	@echo "directory '$(OBJECTS_DIR)' was created"
+%.o : $(addprefix $(SOURCES_DIR), %.c)
+	$(CC) -c $(CFLAGS) $< -o $@ $(INCLUDES)
 
 bonus : ${CHECKER}
 
-${CHECKER} : Makefile ${LIBFT} $(OBJECTS_CHECKER)
-	@${CC} ${CFLAGS} ${OBJECTS_CHECKER} -o ${CHECKER} ${LIBRARIES} ${INCLUDES}
-	@echo "'${CHECKER}' was created"
+${CHECKER} : Makefile $(HEADER) ${LIBFT} $(OBJECTS_LIST_CHECKER)
+	@${CC} ${CFLAGS} ${OBJECTS_LIST_CHECKER} -o ${CHECKER} ${LIBRARIES} ${INCLUDES}
+	@printf "'${CHECKER}' was compiled\n"
 
 clean :
-	@$(MAKE) fclean -C ./libft
-	@rm -rf $(OBJECTS_DIR)
-	@echo "command 'clean' was done"
+	@make clean -C ./libft
+	@rm -rf $(OBJECTS_LIST_PS) $(OBJECTS_LIST_CHECKER)
+	@printf "command 'clean' was done\n"
 
 fclean : clean
-	@$(MAKE) fclean -C ./libft
+	@make fclean -C ./libft
 	@rm -rf ${PUSH_SWAP} ${CHECKER}
-	@echo "command 'fclean' was done"
+	@printf "command 'fclean' was done\n"
 
 re : fclean all
-	@echo "command 're' was done."
+	@printf "command 're' was done\n"
 
 .PHONY: all clean fclean re
