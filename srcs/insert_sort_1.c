@@ -60,7 +60,11 @@ void	insert_sort(t_main *inf)
 		inf->a->order == inf->insert->median)
 			do_command(inf, "ra");
 		else
+		{
 			do_command(inf, "pb");
+			if (inf->b->order > inf->insert->median)
+				do_command(inf, "rb");
+		}
 	}
 	make_circle_sort(inf);
 	do_insert_sort(inf);
