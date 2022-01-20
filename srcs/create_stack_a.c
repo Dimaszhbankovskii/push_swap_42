@@ -52,7 +52,7 @@ static t_stack	*order_stack_a(t_stack **stack, int *arr, t_main *inf)
 	{
 		free_stack(stack);
 		free (arr);
-		exit (end_program(inf, 5));
+		exit (end_program("Error: malloc 'stack A'\n", inf, 5));
 	}
 	tmp = *stack;
 	i = 0;
@@ -77,7 +77,7 @@ static t_stack	*create_new_nod(t_main *inf)
 
 	new = (t_stack *)malloc((sizeof(t_stack)));
 	if (!new)
-		exit (end_program(inf, 5));
+		exit (end_program("Error: malloc 'stack A'\n", inf, 5));
 	new->value = 0;
 	new->order = 0;
 	new->flag = 0;

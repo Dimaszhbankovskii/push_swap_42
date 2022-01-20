@@ -36,7 +36,7 @@ static void	init_score(t_main *inf)
 	{
 		tmp->score = (t_score *)malloc(sizeof(t_score));
 		if (!tmp->score)
-			exit(end_program(inf, 13));
+			exit(end_program("Error: malloc 'score'\n", inf, 13));
 		tmp->score->score_ra = 0;
 		tmp->score->score_rra = 0;
 		tmp->score->score_rb = 0;
@@ -67,7 +67,7 @@ void	insert_sort(t_main *inf)
 {
 	inf->insert = (t_insert *)malloc(sizeof(t_insert));
 	if (!inf->insert)
-		exit(end_program(inf, 14));
+		exit(end_program("Error: malloc inf->insert\n", inf, 14));
 	init_score(inf);
 	find_min_max_median(inf);
 	prepare_insert_sort(inf);

@@ -97,7 +97,7 @@ int			count_unsort_stack_a(t_stack **stack);
 
 int			check_sort_input_data(char **arr);
 int			len_arr_str(char **arr);
-int			end_program(t_main *inf, int num_error);
+int			end_program(char *str, t_main *inf, int num_error);
 void		print_result(char *res);
 
 #endif

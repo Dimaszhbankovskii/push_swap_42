@@ -11,7 +11,7 @@ void	write_command(t_main *inf, char const *str, int done)
 	{
 		tmp->command = ft_strdup(str);
 		if (!tmp->command)
-			exit(end_program(inf, 8));
+			exit(end_program("Error: malloc 'command'\n", inf, 8));
 		tmp->next = create_new_result(inf);
 		tmp->next->prev = tmp;
 	}

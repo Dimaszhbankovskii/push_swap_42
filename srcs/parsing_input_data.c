@@ -32,6 +32,6 @@ char	**parsing_input_data(int argc, char **argv, t_main *inf)
 	else
 		arr = dup_arr(argv, argc - 1);
 	if (!arr)
-		exit(end_program(inf, 2));
+		exit(end_program("Error: malloc 'parsing data'\n", inf, 2));
 	return (arr);
 }

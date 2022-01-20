@@ -6,7 +6,7 @@ t_main	*init_inf(void)
 
 	inf = (t_main *)malloc(sizeof(t_main));
 	if (!inf)
-		exit(end_program(NULL, 1));
+		exit(end_program("Error: malloc 'inf'\n", NULL, 1));
 	inf->a = NULL;
 	inf->b = NULL;
 	inf->data = NULL;
@@ -42,8 +42,9 @@ int	len_arr_str(char **arr)
 	return (i);
 }
 
-int	end_program(t_main *inf, int num_error)
+int	end_program(char *str, t_main *inf, int num_error)
 {
+	ft_putstr_fd(str, 2);
 	free_inf(inf);
 	return (num_error);
 }

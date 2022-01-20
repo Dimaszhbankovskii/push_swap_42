@@ -6,7 +6,7 @@ t_command	*create_new_result(t_main *inf)
 
 	new = (t_command *)malloc(sizeof(t_command));
 	if (!new)
-		exit (end_program(inf, 7));
+		exit (end_program("Error: malloc 'res'\n", inf, 7));
 	new->command = NULL;
 	new->next = NULL;
 	new->prev = NULL;

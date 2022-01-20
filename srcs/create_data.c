@@ -20,7 +20,7 @@ t_data	*create_struct_data(t_main *inf)
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
-		exit (end_program(inf, 6));
+		exit (end_program("Error: malloc 'data'\n", inf, 6));
 	data->next = 1;
 	data->mid = 0;
 	data->max = 0;
