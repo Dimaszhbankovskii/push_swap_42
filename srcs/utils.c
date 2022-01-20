@@ -42,13 +42,6 @@ int	len_arr_str(char **arr)
 	return (i);
 }
 
-// int	error_mess(char	*mess, t_main *inf, int num_error)
-// {
-// 	ft_putstr_fd(mess, 1);
-// 	free_inf(inf);
-// 	return (num_error);
-// }
-
 int	end_program(t_main *inf, int num_error)
 {
 	free_inf(inf);

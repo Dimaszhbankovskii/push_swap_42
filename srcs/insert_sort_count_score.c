@@ -23,7 +23,7 @@ static void	count_score_ra_rra(t_main *inf, t_stack *b)
 	b->order > end_stack(&(inf->a))->order)
 	{
 		b->score->score_ra = 0;
-		b->score->score_rra = 0;	//?
+		b->score->score_rra = 0;
 	}
 }
 

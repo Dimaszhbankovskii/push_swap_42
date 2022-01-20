@@ -46,13 +46,8 @@ static void	init_score(t_main *inf)
 	}
 }
 
-void	insert_sort(t_main *inf)
+static void	prepare_insert_sort(t_main *inf)
 {
-	inf->insert = (t_insert *)malloc(sizeof(t_insert));
-	if (!inf->insert)
-		exit(end_program(inf, 14));
-	init_score(inf);
-	find_min_max_median(inf);
 	while (len_stack(&(inf->a)) > 3)
 	{
 		if (inf->a->order == inf->insert->min || \
@@ -66,11 +61,22 @@ void	insert_sort(t_main *inf)
 				do_command(inf, "rb");
 		}
 	}
+}
+
+void	insert_sort(t_main *inf)
+{
+	inf->insert = (t_insert *)malloc(sizeof(t_insert));
+	if (!inf->insert)
+		exit(end_program(inf, 14));
+	init_score(inf);
+	find_min_max_median(inf);
+	prepare_insert_sort(inf);
 	make_circle_sort(inf);
 	do_insert_sort(inf);
 	while (!check_sort_stack(&(inf->a)))
 	{
-		if (find_order(&(inf->a), find_min_value_order(&(inf->a))) < len_stack(&(inf->a)) / 2)
+		if (find_order(&(inf->a), \
+		find_min_value_order(&(inf->a))) < len_stack(&(inf->a)) / 2)
 			do_command(inf, "ra");
 		else
 			do_command(inf, "rra");

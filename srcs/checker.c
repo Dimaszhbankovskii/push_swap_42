@@ -37,7 +37,7 @@ static char	*valid_command(char *str, t_main *inf)
 		i++;
 	out = (char *)malloc(sizeof(char) * (i + 1));
 	if (!out)
-		exit(error_mess("Error: malloc 'checker'\n", inf, 11));
+		exit(end_program(inf, 20));
 	i = 0;
 	while (str && str[i] != '\n' && str[i])
 	{
@@ -60,7 +60,7 @@ static void	checker(t_main *inf)
 		if (!(do_command_checker(inf, line)))
 		{
 			free (line);
-			exit(error_mess("error\n", inf, 12));
+			exit(end_program(inf, 12));
 		}
 		free (line);
 		line = NULL;
@@ -80,11 +80,14 @@ int	main(int argc, char **argv)
 	inf->arr_char = parsing_input_data(argc, argv, inf);
 	check = input_validation(len_arr_str(inf->arr_char), inf->arr_char);
 	if (check == 0)
-		exit(error_mess("No data enter!\n", inf, 3));
+		exit(end_program(inf, 0));
 	if (check == -1)
-		exit(error_mess("Error\n", inf, 4));
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(end_program(inf, 0));
+	}
 	if (check == 1 && check_sort_input_data(inf->arr_char))
-		exit(error_mess(NULL, inf, 0));
+		exit(end_program(inf, 0));
 	if (check == 1)
 	{
 		checker(inf);

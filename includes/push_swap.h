@@ -3,8 +3,6 @@
 
 # include "../libft/libft.h"
 
-# include <stdio.h>
-
 typedef struct s_score
 {
 	int	score_ra;
@@ -38,7 +36,6 @@ typedef struct s_insert
 	int	max;
 	int	median;
 }				t_insert;
-
 
 typedef struct s_command
 {
@@ -101,10 +98,6 @@ int			count_unsort_stack_a(t_stack **stack);
 int			check_sort_input_data(char **arr);
 int			len_arr_str(char **arr);
 int			end_program(t_main *inf, int num_error);
-// int			error_mess(char	*mess, t_main *inf, int num_error);
 void		print_result(char *res);
-
-//----------------------------------
-void	print_stack(t_stack *stack);
 
 #endif

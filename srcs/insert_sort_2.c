@@ -19,40 +19,33 @@ static t_stack	*find_elem_min_score(t_stack **b)
 	return (tmp);
 }
 
+static void	insert_elem_comb(t_main *inf, t_stack *elem)
+{
+	if (elem->score->score_ra <= elem->score->score_rra && \
+	elem->score->score_rb <= elem->score->score_rrb)
+	{
+		while (elem->score->score_ra && elem->score->score_rb)
+		{
+			do_command(inf, "rr");
+			elem->score->score_ra--;
+			elem->score->score_rb--;
+		}
+	}
+	else if (elem->score->score_ra > elem->score->score_rra && \
+	elem->score->score_rb > elem->score->score_rrb)
+	{
+		while (elem->score->score_rra && elem->score->score_rrb)
+		{
+			do_command(inf, "rrr");
+			elem->score->score_rra--;
+			elem->score->score_rrb--;
+		}
+	}
+}
+
 static void	insert_elem(t_main *inf, t_stack *elem)
 {
-	if (elem->score->score_ra <= elem->score->score_rra && elem->score->score_rb <= elem->score->score_rrb)
-	{
-		while (elem->score->score_ra || elem->score->score_rb)
-		{
-			if (elem->score->score_ra)
-			{
-				do_command(inf, "ra");
-				elem->score->score_ra--;
-			}
-			if (elem->score->score_rb)
-			{
-				do_command(inf, "rb");
-				elem->score->score_rb--;
-			}
-		}
-	}
-	else if (elem->score->score_ra > elem->score->score_rra && elem->score->score_rb > elem->score->score_rrb)
-	{
-		while (elem->score->score_rra || elem->score->score_rrb)
-		{
-			if (elem->score->score_rra)
-			{
-				do_command(inf, "rra");
-				elem->score->score_rra--;
-			}
-			if (elem->score->score_rrb)
-			{
-				do_command(inf, "rrb");
-				elem->score->score_rrb--;
-			}
-		}
-	}
+	insert_elem_comb(inf, elem);
 	if (elem->score->score_ra <= elem->score->score_rra)
 		while (elem->score->score_ra--)
 			do_command(inf, "ra");
@@ -65,7 +58,6 @@ static void	insert_elem(t_main *inf, t_stack *elem)
 	else
 		while (elem->score->score_rrb--)
 			do_command(inf, "rrb");
-
 	do_command(inf, "pa");
 }
 

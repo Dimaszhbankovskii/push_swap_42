@@ -1,5 +1,7 @@
 #include "../includes/push_swap.h"
 
+#include <stdio.h>
+
 static char	*push_swap(t_main *inf)
 {
 	inf->a = create_stack_a(inf);
@@ -28,7 +30,7 @@ int	main(int argc, char **argv)
 		exit(end_program(inf, 0));
 	if (check == -1)
 	{
-		ft_putstr_fd("Error\n", 1);
+		ft_putstr_fd("Error\n", 2);
 		exit(end_program(inf, 0));
 	}
 	if (check == 1 && check_sort_input_data(inf->arr_char))

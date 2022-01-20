@@ -5,7 +5,7 @@ static int	str_is_digit(char const *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '-')
+	if (str[i] == '-' && ft_isdigit(str[i + 1]))
 		i++;
 	while (str[i])
 	{

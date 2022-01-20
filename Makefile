@@ -31,8 +31,7 @@ SOURCES_LIST_PS		=	push_swap.c \
 						sort_half_stack_a_2.c \
 						output_result.c \
 						get_result.c \
-						free_all.c \
-						del_utils.c
+						free_all.c
 SOURCES_PS				=	$(addprefix $(SOURCES_DIR), $(SOURCES_LIST_PS))
 
 SOURCES_LIST_CHECKER	=	checker.c \
