@@ -13,6 +13,7 @@ void	free_stack(t_stack **stack)
 		{
 			tmp1->next = NULL;
 			tmp1->prev = NULL;
+			free(tmp1->score);
 			free(tmp1);
 			tmp1 = tmp2;
 			if (tmp2)

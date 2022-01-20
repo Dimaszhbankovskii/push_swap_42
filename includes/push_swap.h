@@ -19,7 +19,7 @@ typedef struct s_stack
 	int				value;
 	int				order;
 	int				flag;
-	struct s_score	*score;	//
+	struct s_score	*score;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
@@ -100,7 +100,8 @@ int			count_unsort_stack_a(t_stack **stack);
 
 int			check_sort_input_data(char **arr);
 int			len_arr_str(char **arr);
-int			error_mess(char	*mess, t_main *inf, int num_error);
+int			end_program(t_main *inf, int num_error);
+// int			error_mess(char	*mess, t_main *inf, int num_error);
 void		print_result(char *res);
 
 //----------------------------------

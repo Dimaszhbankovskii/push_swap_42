@@ -25,11 +25,14 @@ int	main(int argc, char **argv)
 	inf->arr_char = parsing_input_data(argc, argv, inf);
 	check = input_validation(len_arr_str(inf->arr_char), inf->arr_char);
 	if (check == 0)
-		exit(error_mess("No data enter!\n", inf, 3));
+		exit(end_program(inf, 0));
 	if (check == -1)
-		exit(error_mess("Error\n", inf, 4));
+	{
+		ft_putstr_fd("Error\n", 1);
+		exit(end_program(inf, 0));
+	}
 	if (check == 1 && check_sort_input_data(inf->arr_char))
-		exit(error_mess(NULL, inf, 0));
+		exit(end_program(inf, 0));
 	if (check == 1)
 	{
 		print_result(push_swap(inf));

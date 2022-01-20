@@ -27,23 +27,6 @@ static void	count_score_ra_rra(t_main *inf, t_stack *b)
 	}
 }
 
-// static int	count_score_rra(t_main *inf, t_stack **b)
-// {
-// 	int		count;
-// 	t_stack	*tmp_a;
-// 	t_stack	*tmp_b;
-
-// 	count = 0;
-// 	tmp_a = end_stack(&(inf->a));
-// 	tmp_b = *b;
-// 	while (tmp_a && tmp_b && tmp_a->order > tmp_b->order)
-// 	{
-// 		tmp_a = tmp_a->prev;
-// 		count++;
-// 	}
-// 	return (count);
-// }
-
 static int	count_score_all(t_score *score)
 {
 	int	count;

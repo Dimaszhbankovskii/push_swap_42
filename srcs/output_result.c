@@ -53,7 +53,7 @@ static void	replace_command(t_command **tmp, char const *str, t_main *inf)
 	save->command = NULL;
 	save->command = ft_strdup(str);
 	if (!save->command)
-		exit(error_mess("Error: malloc 'replace_command'\n", inf, 9));
+		exit(end_program(inf, 9));
 	save->next = del->next;
 	if (del->next)
 		del->next->prev = save;

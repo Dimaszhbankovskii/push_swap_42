@@ -32,7 +32,7 @@ char	*get_result(t_main *inf)
 	{
 		str = make_str(str, tmp->command);
 		if (!str)
-			exit(error_mess("Error: malloc 'get_res'\n", inf, 10));
+			exit(end_program(inf, 10));
 		tmp = tmp->next;
 	}
 	return (str);
